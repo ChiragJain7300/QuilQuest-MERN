@@ -1,8 +1,9 @@
 import { cn } from "@/lib/utils";
 import { Book } from "lucide-react";
-import Image from "next/image";
 import React from "react";
 import BookCoverSvg from "./BookCoverSvg";
+import { Image } from "@imagekit/next";
+import config from "@/lib/config";
 type BookCoverVariant = "extraSmall" | "small" | "medium" | "regular" | "wide";
 
 const variantStyles: Record<BookCoverVariant, string> = {
@@ -39,9 +40,11 @@ const BookCover = ({
       >
         <Image
           src={coverUrl}
+          urlEndpoint={config.env.imagekit.urlEndpoint}
           alt="Book cover"
           fill
           className="rounded-sm object-fill"
+          loading="lazy"
         />
       </div>
     </div>

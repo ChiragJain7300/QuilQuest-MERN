@@ -8,6 +8,20 @@
       "when": 1747592202328,
       "tag": "0000_low_slapstick",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1749737413334,
+      "tag": "0001_sudden_leo",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1749843075203,
+      "tag": "0002_quick_titanium_man",
+      "breakpoints": true
     }
   ]
 }

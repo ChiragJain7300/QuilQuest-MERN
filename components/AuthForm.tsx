@@ -28,10 +28,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { FIELD_NAMES, FIELD_TYPES } from "@/constants";
-import ImageUpload from "./ImageUpload";
 import Link from "next/link";
 import { toast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
+import FileUpload from "./FileUpload";
 
 const AuthForm = <T extends FieldValues>({
   formType,
@@ -102,7 +102,13 @@ const AuthForm = <T extends FieldValues>({
                   </FormLabel>
                   <FormControl>
                     {field.name === "universityCard" ? (
-                      <ImageUpload onFileChange={field.onChange} />
+                      <FileUpload
+                        type="image"
+                        placeholder="Upload your ID"
+                        variant="dark"
+                        folder="ids"
+                        onFileChange={field.onChange}
+                      />
                     ) : (
                       <Input
                         required

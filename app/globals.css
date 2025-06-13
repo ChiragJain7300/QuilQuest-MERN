@@ -177,12 +177,12 @@
   }
 
   .book-overview_btn {
-    @apply mt-4 min-h-14 w-fit text-dark-100 max-md:w-full !important;
+    @apply hover:text-white mt-4 min-h-14 w-fit text-dark-100 max-md:w-full !important;
   }
 
   /* File Upload */
   .upload-btn {
-    @apply flex min-h-14 w-full items-center justify-center gap-2 rounded-md;
+    @apply flex min-h-14 w-full items-center justify-center gap-2 rounded-md p-2;
   }
 
   .upload-filename {

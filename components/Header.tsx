@@ -1,60 +1,32 @@
-"use client";
-import { cn, getInitials } from "@/lib/utils";
-import { Session } from "next-auth";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React, { use } from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+//
 
-const Header = ({ session }: { session: Session }) => {
-  const pathname = usePathname();
+import Link from "next/link";
+import Image from "next/image";
+import { signOut } from "@/auth";
+import { Button } from "@/components/ui/button";
+
+const Header = () => {
   return (
-    <div className="dark:text-white text-white w-full flex justify-between items-center py-4 gap-5">
-      <div className="text-3xl flex items-center gap-3">
-        <Image src={"/icons/logo.svg"} alt="main-logo" width={40} height={40} />
-        <p>QuillQuest</p>
-      </div>
-      <ul className="flex gap-4 text-lg font-semibold tracking-wider items-center">
+    <header className="my-10 flex justify-between gap-5">
+      <Link href="/">
+        <Image src="/icons/logo.svg" alt="logo" width={40} height={40} />
+      </Link>
+
+      <ul className="flex flex-row items-center gap-8">
         <li>
-          <Link
-            href={"/"}
-            className={cn(
-              "",
-              pathname === "/" ? "text-white/80 underline" : ""
-            )}
+          <form
+            action={async () => {
+              "use server";
+
+              await signOut();
+            }}
+            className="mb-10"
           >
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link
-            href={"#"}
-            className={cn(
-              "",
-              pathname === "/library" ? "text-white/80 underline" : ""
-            )}
-          >
-            Library
-          </Link>
-        </li>
-        <li>
-          <Link
-            href={"/my-profile"}
-            className={cn(
-              "",
-              pathname === "/my-profile" ? "text-white/80 underline" : ""
-            )}
-          >
-            <Avatar>
-              <AvatarFallback className="bg-dark-400 text-light-200">
-                {getInitials(session?.user?.name || "User")}
-              </AvatarFallback>
-            </Avatar>
-          </Link>
+            <Button className="text-black hover:text-white">Logout</Button>
+          </form>
         </li>
       </ul>
-    </div>
+    </header>
   );
 };
 
